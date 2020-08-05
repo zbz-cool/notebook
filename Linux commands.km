@@ -1,0 +1,38 @@
+{
+    "root": {
+        "data": {
+            "id": "c4or9fhvveg0",
+            "created": 1596599427805,
+            "text": "hhh",
+            "hyperlink": "https://www.baidu.com",
+            "hyperlinkTitle": "百度",
+            "progress": 7,
+            "priority": 9
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "c4or9r5n6b40",
+                    "created": 1596599453186,
+                    "text": "topic",
+                    "layout_mind_offset": {
+                        "x": -42,
+                        "y": 3
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "c4orca35dd40",
+                    "created": 1596599651123,
+                    "text": "topic"
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}

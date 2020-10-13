@@ -141,6 +141,7 @@ ldd basecaller # 查看所有依赖库的情况
 
 ## 11. 查看系统信息
 
+- `sar -u 1 100` 例如每1秒采集一次CPU使用率，共采集100次
 - `which` : 查询某个命令所在目录
 - `nvidia-smi` ：查看显卡
 - `cat /etc/issue` 或 `uname -a` ：发行版

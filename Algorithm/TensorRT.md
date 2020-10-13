@@ -59,7 +59,7 @@ Im using onnxruntime to implement pytorch model, but it runs twice slower!!!
 1. 下载解压 TensorRT-7.1.3.4.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn8.0.tar.gz 文件, 可以在 <https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html> 网址进行下载, 保存在2.116的~/media_data/install_tensorrt文件夹下
 2. cd TensorRT-${version}/python
 3. source venv3/bin/xxxx (激活特定的虚拟环境)
-4. pip3 install tensorrt-*-cp3x-none-linux_x86_64.whl
+4. pip3 install tensorrt-*-cp3x-none-linux_x86_64.whl  # 其中x表示python的版本
 
 ## 运行bonito to tensorrt
 
@@ -67,5 +67,33 @@ Im using onnxruntime to implement pytorch model, but it runs twice slower!!!
 2. cd /home/zbz/bonito_tenserrt_0.1.5
 3. source venv3/bin/activate
 4. python bonito/basecaller_bak.py  # 生成bonito.onnx
-5. python bonito/trt_inference.py # 生成bonito_engine.onnx, 并且运行tensorrt
+5. python bonito/trt_inference.py # 生成bonito_engine.onnx, 并且运行 tensorrt
 6. 但速度没有加快, samples per second 3.8E+05
+
+## torch2trt
+
+```sh
+问题 : AttributeError: module 'torch.jit' has no attribute '_script_if_tracing'
+pip uninstall torchvision  
+pip install torchvision==0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+执行 :
+source venv3/bin/activate  # 找一个bonito的虚拟环境
+./test.sh zbz
+结果 : AttributeError: 'Tensor' object has no attribute '_trt', 由于一些layer没有实现, 就会出现这个问题 <https://github.com/NVIDIA-AI-IOT/torch2trt/issues/15>
+```
+
+## pytorch -> onnx -> tensorrt 
+
+- [become slower after converting to tensorrt](https://github.com/onnx/onnx-tensorrt/issues/307)
+- [Inference time PyTorch vs TRT](https://github.com/onnx/onnx-tensorrt/issues/294)
+
+## 后期工作方向
+
+1. 测试固定长度对速度的影响
+2. 测试mobilenet, shufflenet网络, 从 pytorch -> onnx -> tensorrt 的性能提升
+3. 测试多个reads同时输入的情况
+4. GPU + AVX
+5. 流程图
+6. [最快的人脸检测！ONNX+TensorRT只要4ms](https://juejin.im/post/6844903967059771399)
+7. [基于tensorRT的BERT服务部署](https://zhuanlan.zhihu.com/p/103870089)

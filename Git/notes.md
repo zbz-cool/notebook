@@ -56,3 +56,8 @@ git checkout -b xxx origin/xxx # 拉取远端分支, 并切换到该分支上
 
 将某个分支的某个提交合并到当前分支
 > <http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html>
+
+## 如何忽略已经被跟踪文件的修改
+> <https://blog.csdn.net/qq_29550537/article/details/101484038>
+1. `git update-index --assume-unchange xxfile`
+2. `git update-index --no-assume-uchange xxfile`

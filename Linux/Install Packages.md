@@ -167,7 +167,7 @@ sudo apt-get install clang-5.0 libc++-dev
 - 安装grpc
 
 ```sh
-git clone --recurse-submodules -b v1.30.0 https://github.com/grpc/grpc  # 可以选择更高版本
+git clone --recurse-submodules -b v1.30.0 git@git.zhlh6.cn:grpc/grpc.git  # 可以选择更高版本
 cd grpc
 git submodule update --init
 mkdir -p cmake/build
@@ -191,3 +191,5 @@ make
 
 如出现错误 : `CMake Error at /usr/local/lib/cmake/grpc/gRPCConfig.cmake:13 (include):`  
 需将 `cmake` 更新到最新版本
+
+## [clang-format for win](https://juejin.im/post/6844904174736375815)

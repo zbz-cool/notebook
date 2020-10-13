@@ -3,3 +3,7 @@ build/*
 build
 test.cpp
 test.py
+Test
+boost_test/CMakeLists.txt
+boost_test/FindBoost.cmake
+boost_test

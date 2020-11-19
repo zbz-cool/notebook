@@ -610,7 +610,6 @@ int main() {
 ```
 
 ## 39. [[noreturn]]
->>>>>>> Stashed changes
 
 主要用于标识那些不会将控制流返回给原调用函数的函数，典型的例子有：有终止应用程序语句的函数、有无限循环语句的函数、有异常抛出的函数等。
 
@@ -838,7 +837,7 @@ memcpy(signal_data.data(), signal, signal_len * sizeof(float));
 4. 运行全局构造器，估计是C++中构造函数之类的吧
 5. 将main函数的参数，`argc，argv` 等传递给main函数，然后才真正运行main函数
 
-## inline 使用
+## 55. inline 使用
 
 inline是加在实现上，就算加在声明上，编译器也会忽略掉。内联展开是在编译时进行的，只有链接的时候源文件之间才有关系。所以内联要想跨源文件必须把实现写在头文件里。如果一个 `inline` 函数会在多个源文件中被用到，那么必须把它定义在头文件中。
 
@@ -848,7 +847,7 @@ inline是加在实现上，就算加在声明上，编译器也会忽略掉。�
 
 inline函数的特征是在调用的地方插入相应函数的代码，所以编译之后的目标文件里是没有inline函数体的，因为在要调用的地方它都已经用相应的语句替换掉了（当然这只限于内联成功的情况）。如果我们将inline函数写在cpp文件里，但是绝大多数情况下，在我们用第三方类库的时候，我们只有头文件和目标文件（没有cpp文件），当你调用那个内联函数时，编译器没办法找到它。所以说将inline函数写在cpp文件中是没什么用的。
 
-## `lock_guard, unique_lock`
+## 56. `lock_guard, unique_lock`
 
 区域锁`lock_guard`使用起来比较简单，除了构造函数外没有其他 `member function`，在整个区域都有效。
 
@@ -857,3 +856,59 @@ inline函数的特征是在调用的地方插入相应函数的代码，所以�
 `unique_guard` 可以通过 `lock/unlock` 可以比较灵活的控制锁的范围，减小锁的粒度。
 
 通过 `try_lock_for/try_lock_until` 则可以控制加锁的等待时间，此时这种锁为乐观锁。
+
+## 57. __gnu_cxx 中__pool_alloc内存分配器的使用
+
+__pool_alloc内部使用链表进行管理内存、预分配内存、不归还内存给操作系统等机制来减少malloc的调用次数。
+
+```cpp
+#include<iostream>
+#include<vector>
+#include<string>
+#include<ext/pool_allocator.h>
+
+int main()
+{
+    int nLoop = 0;
+    std::cin >> nLoop;
+    std::vector<int, __gnu_cxx::__pool_alloc<int> > vec;
+    for (int i = 0; i < nLoop; i++) {
+        vec.push_back(i);
+    }
+
+    std::cout << "allo end\n";
+    std::string str;
+    std::cin >> str;
+    return 0;
+}
+```
+
+## 58. std::list 排序
+
+list 底层是链表，迭代器不支持随机访问，所以不能外 std::sort 进行排序，必须使用自带的sort函数.
+能用自带的 sort，就不用外部的 sort
+
+```cpp
+#include <iostream>
+#include <list>
+#include <vector>
+#include <algorithm>
+
+template <typename T>
+void MyPrint(T t) {
+    for (const auto& i : t) {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    std::list<int> my_list = {3, 1, 2};  // list 不支持随机访问（直接计算迭代器，访问元素）
+    my_list.sort();
+    MyPrint(my_list);
+
+    std::vector<int> my_vec = {3, 1, 2};
+    std::sort(my_vec.begin(), my_vec.end());
+    MyPrint(my_vec);
+}
+```

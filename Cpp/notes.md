@@ -1,4 +1,16 @@
-## 1. 开发心得
+## 1. 第一层次，C++基础
+挑选一本入门书籍，如《C++ Primer》、《C++大学教程》、或Stroustrup撰写的经典《C++程序设计语言》或他一年半前的新作《C++程序设计原理与实践》，而一般C++课程也止于此，另外《C++ 标准程序库》及《The C++ Standard Library Extensions》可供参考；
+
+## 2. 第二层次，正确高效地使用C++
+此层次开始必须自修，阅读过《(More)Effective C++》、《(More)Exceptional C++》、《Effective STL》及《C++编程规范》等，才适宜踏入专业C++开发之路；
+
+## 3. 第三层次，深入了解C++
+关于全局问题可读《深入探索C++对象模型》、《Imperfect C++》、《C++沉思录》、《STL源码剖析》，要挑战智商，可看关于模版及模版元编程的书籍如《C++ Templates》、《C++设计新思维》、《C++模版元编程》；
+
+## 4. 第四层次，研究C++
+阅读《C++语言的设计和演化》、《编程的本质》(含STL设计背后的数学根基)、C++标准文件《ISO/IEC 14882:2003》、C++标准委员会的提案书和报告书、关于C++的学术文献。
+
+## 5. 开发心得
 
 - void 函数, 最后不需要使用return
 - 类成员函数, 尽量使用 const(不修改类成员变量), static, override, final等关键词
@@ -11,11 +23,11 @@
 - 组合优于继承
 - 为了减小调用函数时压栈出栈的开销，应该尽量将短小函数声明为inline类型
 
-## 2. using namespace xxx
+## 6. using namespace xxx
 
-不要在头文件中使用命名空间的申明, 要在保证
+尽量不要在头文件中使用命名空间的申明
 
-## 3. 编译器隐式为类生成的成员函数
+## 7. 编译器隐式为类生成的成员函数
 
 | 函数名 | 说明 | 备注
 | -- | -- | --
@@ -24,15 +36,15 @@
 
 为了保证移动语义的传递，程序员在编写移动构造函数的时候，应该总是记得使用std::move转换拥有形如堆内存、文件句柄等资源的成员为右值，这样一来，如果成员支持移动构造的话，就可以实现其移动语义。**而即使成员没有移动构造函数，那么接受常量左值的构造函数版本也会轻松地实现拷贝构造，因此也不会引起大的问题。**
 
-## 4. [进程见通信](https://www.cnblogs.com/zgq0/p/8780893.html)
+## 8. [进程见通信](https://www.cnblogs.com/zgq0/p/8780893.html)
 
-## 5. [参看文档](https://en.cppreference.com/w/cpp)
+## 9. [参看文档](https://en.cppreference.com/w/cpp)
 
-## 6. 静态检查工具
+## 10. 静态检查工具
 
 [Cppcheck](http://cppcheck.sourceforge.net/)
 
-## 7. Convert int/float to string
+## 11. Convert int/float to string
 
 ```C++
 std::ostringstream ss;
@@ -45,7 +57,7 @@ ss.clear();
 ss << std::fixed << std::setprecision(2) << num_reads;
 ```
 
-## 8. 计算时间差
+## 12. 计算时间差
 
 ```C++
 #include <chrono>
@@ -59,11 +71,11 @@ duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 printf("%s %f ", file_name.c_str(), time_span.count());
 ```
 
-## 9. std::cout
+## 13. std::cout
 
 默认情况下只输出小数点后4位, 需要设置精度
 
-## 10. setw、setfill
+## 14. setw、setfill
 
 setw控制符只对后面紧跟的起作用，而setfill控制符一旦设定，就会对后面一直起作用，直到你重新设置。
 
@@ -100,7 +112,7 @@ int main()
 */
 ```
 
-## 11. std::find
+## 15. std::find
 
 ```C++
 std::vector<int> vec = {1, 2, 3, 4};
@@ -108,7 +120,7 @@ std::vector<int> vec = {1, 2, 3, 4};
 const std::vector<int>::iterator itr = std::find(vec.begin(), vec.end(), 2);
 ```
 
-## 12. std::tuple C++17 不用拆元组, 牛逼
+## 16. std::tuple C++17 不用拆元组, 牛逼
 
 ```C++
 #include <iostream>
@@ -125,20 +137,20 @@ int main() {
 }
 ```
 
-## 13. [返回类型自动推导](./返回类型自动推导.cpp)
+## 17. [返回类型自动推导](./返回类型自动推导.cpp)
 
-## 14. 模板变成中, 判断typename类型
+## 18. 模板变成中, 判断typename类型
 
 ```C++
 std::is_integral<T>::value
 std::is_floating_point<T>::value
 ```
 
-## 15. template 中的 typename 和 class
+## 19. template 中的 typename 和 class
 
 typename 和 class 在模板参数列表中没有区别，在 typename 这个关键字出现之前，都是使用 class 来定义模板参数的。但在模板中定义有嵌套依赖类型的变量时，需要用 typename 消除歧义
 
-## 16. override
+## 20. override
 
 当重载虚函数时，引入 override 关键字将显式的告知编译器进行重载，编译器将检查基函数是否存在这样的虚函数，否则将无法通过编译：
 
@@ -153,7 +165,7 @@ struct SubClass: Base {
 };
 ```
 
-## 17. final
+## 21. final
 
  final 则是为了防止类被继续继承以及终止虚函数继续重载引入的。
 
@@ -173,7 +185,7 @@ struct SubClass3: Base {
 };
 ```
 
-## 18. default & delete
+## 22. default & delete
 
 允许显式的声明采用或拒绝编译器自带的函数。例如：
 
@@ -186,9 +198,9 @@ class Magic {
 }
 ```
 
-## 19. [std::move 左值 右值](https://blog.csdn.net/kitekitebaby/article/details/72566145)
+## 23. [std::move 左值 右值](https://blog.csdn.net/kitekitebaby/article/details/72566145)
 
-## 20. 泛型 Lambda C++14
+## 24. 泛型 Lambda C++14
 
 ```C++
 auto add = [](auto x, auto y) {
@@ -199,7 +211,7 @@ add(1, 2);
 add(1.1, 2.2);
 ```
 
-## 21. cppcheck 静态检查
+## 25. cppcheck 静态检查
 
 ```sh
 # Recursively check the current folder. Print the progress on the screen and
@@ -216,7 +228,7 @@ add(1.1, 2.2);
   cppcheck -I inc1/ -I inc2/ f.cpp
 ```
 
-## 22. std::boolalpha
+## 26. std::boolalpha
 
 `boolalpha`的作用是使`bool`型变量按照`false、true`的格式输出。如不使用该标识符，那么结果会按照`1、0`的格式输出。
 
@@ -232,19 +244,19 @@ int main(int magc, char *magv[])
 }
 ```
 
-## 23. 尽量在类成员函数后面添加const
+## 27. 尽量在类成员函数后面添加const
 
 表示该函数不会修改任何类成员变量, 但可以修改临时变量
 
-## 24. 多尝试使用嵌套类的, 代码会更加可读与简介
+## 28. 多尝试使用嵌套类的, 代码会更加可读与简介
 
 ```C++
 high_five.getGroup(read_id).getAttribute("DateTime").readString(read_start_time);
 ```
 
-## 25. [使用fork创建子进程](./fork.cpp)
+## 29. [使用fork创建子进程](./fork.cpp)
 
-## 26. 使用 `__func__` 与 `__FUNCTION__` 标识当前函数或类
+## 30. 使用 `__func__` 与 `__FUNCTION__` 标识当前函数或类
 
 另外还有 `__FILE__` 与 `__LINE__`等预定义宏
 
@@ -270,7 +282,7 @@ int main() {
 }
 ```
 
-## 27. 变长参数的宏定义以及__VA_ARGS__
+## 31. 变长参数的宏定义以及__VA_ARGS__
 
 在C99标准中，程序员可以使用变长参数的宏定义。变长参数的宏定义是指在宏定义中参数列表的最后一个参数为省略号，而预定义宏 `__VA_ARGS__` 则可以在宏定义的实现部分替换省略号所代表的字符串。
 
@@ -283,7 +295,7 @@ int main() {
 }
 ```
 
-## 28. assert 与 static_assert
+## 32. assert 与 static_assert
 
 - 在C++中，标准在`<cassert>`或`<assert.h>`头文件中为程序员提供了`assert`宏，用于在运行时进行断言,例如: `assert(n > 0)`, 不满足 n > 0的, 就abort. 但assert是一个运行时的断言，这意味着不运行程序我们将无法得知是否不满足条件。在一些情况下，这是不可接受的，因为可能单次运行代码并不会调用到assert相关的代码路径。因此这样的校验最好是在编译时期就能完成。
 
@@ -299,7 +311,7 @@ int main() {
 }
 ```
 
-## 29. auto 和 decltype 结合起来
+## 33. auto 和 decltype 结合起来
 
 ```cpp
 #include <iostream>
@@ -319,7 +331,7 @@ int main() {
 }
 ```
 
-## 30. 就地初始化 && 初始化列表
+## 34. 就地初始化 && 初始化列表
 
 构造函数中赋值 > 初始化列表 > 就地初始化
 
@@ -353,7 +365,7 @@ a3.a=5
 */
 ```
 
-## 31. initializer list 使用场景(详见<深入理解C++11>)
+## 35. initializer list 使用场景(详见<深入理解C++11>)
 
 - 填空时，默认初始化
 - 函数入参
@@ -415,7 +427,7 @@ P r{1, 2, 3}; // fail
 P s={1,2}; // P(int, int)
 ```
 
-## 32. 模板编程, 判断输入参数类型
+## 36. 模板编程, 判断输入参数类型
 
 虽然提供了std::is_same来判断类型, 但是该方法比较慢, 不建议使用
 
@@ -444,7 +456,7 @@ int main(int argc, char const* argv[]) {
 }
 ```
 
-## 33. 自动遍历
+## 37. 自动遍历
 
 ```cpp
 #include <iostream>
@@ -462,7 +474,7 @@ int main() {
 }
 ```
 
-## 34. 自动遍历与手动遍历的区别
+## 38. 自动遍历与手动遍历的区别
 
 ```cpp
 #include <iostream>
@@ -477,25 +489,25 @@ int main() {
 }
 ```
 
-## 35. terminate, abort, exit, quick_exit, at_quick_exit(深入理解C++11: 6.5)
+## 39. terminate, abort, exit, quick_exit, at_quick_exit(深入理解C++11: 6.5)
 
 terminate 函数实际是异常处理的一部分, 没有被捕捉的异常就会导致terminate函数的调用, 在默认情况下会调用abort函数.
 abort函数不会调用任何的析构函数, 最好不要用该方法来解决进程
 exit 是比较安全的退出函数, 会调用自动变量的析构函数, 并且还会调用atexit注册的函数.
 quick_exit 是快速退出, 不会调用析构函数, 但是属于正常退出, 在退出时会调用at_quick_exit注册过的函数
 
-## 36. 线程局部存储 thread_local
+## 40. 线程局部存储 thread_local
 
 即在全局或者静态变量的声明中加上关键字__thread，即可将变量声明为TLS变量。每个线程将拥有独立的errCode的拷贝，一个线程中对errCode的读写并不会影响另外一个线程中的errCode的数据。
 
-## 37. lambda
+## 41. lambda
 
 - lambda 函数在C++11标准中默认是内联的, 如果是频繁调用的小函数, 使用lambda在性能上会有优势
 - lambda 函数等同于一个局部函数, 只能在父作用域中使用, 使用场景比如 : 小的函数块(需要被多次调用, 且参数可能较多)只在某个很小的作用域内起作用, 超过这个作用域意义不大
 -总的来说，lambda函数被设计的目的，就是要就地书写，就地使用。使用lambda的用户，更倾向于在一个屏幕里看到所有的代码，而不是依靠代码浏览工具在文件间找到函数的实现。
 - lambda作为局部函数也会使得复杂代码的开发加速。通过lambda函数，程序员可以轻松地在函数内重用代码，而无需费心设计接口。事实上，曾经出现过一般重构的风潮，在那段时期，C++程序员被建议为任何重用的代码创建函数，而lambda局部函数的到来则带来了理性思考和折中实现的可能。当然，lambda函数的出现也导致了函数的作用域在C++11中再次被细分，从而也使得C++编程具备了更多的可能。
 
-## 38. lambda 与 for_each 应用
+## 42. lambda 与 for_each 应用
 
 ```cpp
 #include <iostream>
@@ -525,7 +537,7 @@ int main() {
 
 使用for_each算法相较于手写的循环在效率、正确性、可维护性上都具有一定优势。最典型的，程序员不用关心iterator，或者说循环的细节，只需要设定边界，作用于每个元素的操作，就可以在近似“一条语句”内完成循环，正如函数指针版本和lambda版本完成的那样。
 
-### 38.1. lambda 用法举例
+### 42.1. lambda 用法举例
 
 ```cpp
 #include <iostream>
@@ -609,7 +621,7 @@ int main() {
 }
 ```
 
-## 39. [[noreturn]]
+## 43. [[noreturn]]
 
 主要用于标识那些不会将控制流返回给原调用函数的函数，典型的例子有：有终止应用程序语句的函数、有无限循环语句的函数、有异常抛出的函数等。
 
@@ -635,16 +647,16 @@ int main(int argc, const char** argv) {
 }
 ```
 
-## 40. push_back 与 emplace_back
+## 44. push_back 与 emplace_back
 
 `push_back(A)` 需要先调用构造函数创建A, 然后使用移动构造或者拷贝构造函数添加进容器里
 `emplace_back(A)` 只调用一次构造函数, 速度更快
 
-## 41. string size 与 empty
+## 45. string size 与 empty
 
 判断string是否为空, 使用 `empty()`, 而不是 `str.size() == 0`
 
-## 42. [内存碎片产生原因及终极解决办法](https://blog.csdn.net/tong5956/article/details/74937178)
+## 46. [内存碎片产生原因及终极解决办法](https://blog.csdn.net/tong5956/article/details/74937178)
 
 1. 内部碎片 : 由于采用固定大小的内存分区，当一个进程不能完全使用分给它的固定内存区域时就产生了内部碎片，通常内部碎片难以完全避免；
 
@@ -653,7 +665,7 @@ int main(int argc, const char** argv) {
 
 一个不断产生内存碎片的系统，不管产生的内存碎片多么小，只要时间 足够长，就会将内存用完。
 
-## 43. 为什么尽量不用 using namespace std;
+## 47. 为什么尽量不用 using namespace std;
 
 c++库中的类和函数都是在命名空间std里面声明的，但为什么尽量不用using name std呢？因为不管你是否需不需要，这个命名空间std都会导出命名空间的所有名称，这与命名空间的初衷相矛盾。
 
@@ -666,7 +678,7 @@ using std::endl;
 std::cin >> a;
 ```
 
-## 44. `vector`中`v[i]`与`v.at(i)`的区别
+## 48. `vector`中`v[i]`与`v.at(i)`的区别
 
 如果v非空，A行和B行没有任何区别。如果v为空，B行会抛出`std::out_of_range`异常，A行的行为未定义。
 c++标准不要求`vector<T>::operator[]`进行下标越界检查，原因是为了效率，总是强制下标越界检查会增加程序的性能开销。设计vector是用来代替内置数组的，所以效率问题也应该考虑。不过使用`operator[]`就要自己承担越界风险了。如果需要下标越界检查，请使用at。
@@ -683,7 +695,7 @@ int main() {
 }
 ```
 
-## 45. 如何判断浮点数是否相等
+## 49. 如何判断浮点数是否相等
 
 对两个浮点数判断大小和是否相等不能直接用==来判断，会出错！明明相等的两个数比较反而是不相等！对于两个浮点数比较只能通过相减并与预先设定的精度比较，记得要取绝对值。
 
@@ -694,7 +706,7 @@ if (fabs(f1 - f2) < 预先指定的精度）
 }
 ```
 
-## 46. 虚函数
+## 50. 虚函数
 
 在类的成员函数前面加virtual关键字的函数；
 一般把虚函数定义在public区，方便在主函数中调用
@@ -711,18 +723,18 @@ if (fabs(f1 - f2) < 预先指定的精度）
 抽象基类不能产生该类的对象，但可以有该类的指针或引用；
 在子类中必须将父类的纯虚函数实现，不然该子类也是抽象基类；
 
-### 46.1. 不能被子类继承的函数
+### 50.1. 不能被子类继承的函数
 构造函数、拷贝构造函数、析构函数、赋值运算符重载函数
 
-### 46.2. 哪些函数不能声明成虚函数
+### 50.2. 哪些函数不能声明成虚函数
 非成员函数、构造函数、静态成员函数、内联成员函数、友元函数
 
-### 46.3. 基类的析构函数为什么要用virtual虚析构函数
+### 50.3. 基类的析构函数为什么要用virtual虚析构函数
 
 防止内存泄露，delete p（基类）的时候，它很机智的先执行了派生类的析构函数，然后执行了基类的析构函数。
 如果基类的析构函数不是虚函数，在delete p（基类）时，调用析构函数时，只会看指针的数据类型，而不会去看赋值的对象，这样就会造成内存泄露
 
-### 46.4. 虚拟函数表
+### 50.4. 虚拟函数表
 
 虚函数表的实现
 https://www.cnblogs.com/yinbiao/p/10987640.html
@@ -730,7 +742,7 @@ https://www.cnblogs.com/yinbiao/p/10987640.html
 虚拟函数表是在编译期就建立了。
 虚拟函数表指针（this）是在执行构造函数的时进行初始化。
 
-### 46.5. 简述多态实现的原理
+### 50.5. 简述多态实现的原理
 
 编译器发现一个类中有虚函数，便会立即为此类生成虚函数表 vtable。虚函数表的各表项为指向对应虚函数的指针。编译器还会在此类中隐含插入一个指针 vptr（对 vc 编译器来说，它插在类的第一个位置上）指向虚函数表。调用此类的构造函数时，在类的构造函数中，编译器会隐含执行 vptr 与 vtable 的关联代码，将 vptr 指向对应的 vtable，将类与此类的 vtable 联系了起来。另外在调用类的构造函数时，指向基础类的指针此时已经变成指向具体的类的 this 指针，这样依靠此 this 指针即可得到正确的 vtable。  
 
@@ -739,7 +751,7 @@ https://www.cnblogs.com/yinbiao/p/10987640.html
 注意：一定要区分虚函数，纯虚函数、虚拟继承的关系和区别。牢记虚函数实现原理，因为多态
 C++面试的重要考点之一，而虚函数是实现多态的基础。
 
-## 47. 拷贝赋值函数， 应该在函数入口判断是否是自己
+## 51. 拷贝赋值函数， 应该在函数入口判断是否是自己
 
 如果是自己应该直接返回`*this`
 
@@ -751,9 +763,9 @@ MyClass& MyClass::operator=(const MyClass& mc) {
 }
 ```
 
-## 48. static
+## 52. static
 <https://blog.csdn.net/chenyijun/article/details/81938287>  
-#### 48.0.1. C语言的static关键字有三种用途，可从两个方面来分析：**1：作用域，2：生存期**
+#### 52.0.1. C语言的static关键字有三种用途，可从两个方面来分析：**1：作用域，2：生存期**
 1. 静态局部变量
     1. 该变量在全局数据区分配内存(局部变量在栈区分配内存);
     2. 静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化(局部变量每次函数调用都会被初始化);
@@ -769,7 +781,7 @@ MyClass& MyClass::operator=(const MyClass& mc) {
     2. 其它文件中的可以定义相同的名字的函数，不会发生冲突
     3. 作用域：该文件内部， 生存期：整个程序运行期间
 
-#### 48.0.2. C++ 语言的 static 关键字有二种用途
+#### 52.0.2. C++ 语言的 static 关键字有二种用途
 1. 静态数据成员
     1. 用于修饰 class 的数据成员，即所谓“静态成员”。这种数据成员的生存期大于 class 的对象（实体 instance）。
     2. 静态数据成员是每个 class 有一份，普通数据成员是每个 instance 有一份，因此静态数据成员也叫做类变量，而普通数据成员也叫做实例变量。
@@ -797,7 +809,7 @@ int main() {
 }
 ```
 
-## 49. `new[] 与 delete[]`
+## 53. `new[] 与 delete[]`
 
 ```cpp
 #include <iostream>
@@ -813,11 +825,11 @@ int main() {
 }
 ```
 
-## 50. switch 的 case 中如有变量声明, 需要用括号包起来, 不然会报错
+## 54. switch 的 case 中如有变量声明, 需要用括号包起来, 不然会报错
 
-## 51. goto 之后如果有变量声明, 会报错
+## 55. goto 之后如果有变量声明, 会报错
 
-## 52. float* 与 vector<float> 的转化
+## 56. float* 与 vector<float> 的转化
 
 ```cpp
 float* sinal = (float*)malloc(signal_len * sizeof(float));
@@ -825,11 +837,11 @@ std::vector<float> signal_data(signal_len, 0);
 memcpy(signal_data.data(), signal, signal_len * sizeof(float));
 ```
 
-## 53. make_shared 初始化
+## 57. make_shared 初始化
 
 `auto ofm = std::make_shared<OutputFileManager>(result_path_, is_fastq_);`
 
-## 54. 在 main 函数执行前, 还会执行什么代码?
+## 58. 在 main 函数执行前, 还会执行什么代码?
 
 1. 设置栈指针
 2. 初始化 static 静态和 global 全局变量，即 data 段的内容
@@ -837,7 +849,7 @@ memcpy(signal_data.data(), signal, signal_len * sizeof(float));
 4. 运行全局构造器，估计是C++中构造函数之类的吧
 5. 将main函数的参数，`argc，argv` 等传递给main函数，然后才真正运行main函数
 
-## 55. inline 使用
+## 59. inline 使用
 
 inline是加在实现上，就算加在声明上，编译器也会忽略掉。内联展开是在编译时进行的，只有链接的时候源文件之间才有关系。所以内联要想跨源文件必须把实现写在头文件里。如果一个 `inline` 函数会在多个源文件中被用到，那么必须把它定义在头文件中。
 
@@ -847,7 +859,7 @@ inline是加在实现上，就算加在声明上，编译器也会忽略掉。�
 
 inline函数的特征是在调用的地方插入相应函数的代码，所以编译之后的目标文件里是没有inline函数体的，因为在要调用的地方它都已经用相应的语句替换掉了（当然这只限于内联成功的情况）。如果我们将inline函数写在cpp文件里，但是绝大多数情况下，在我们用第三方类库的时候，我们只有头文件和目标文件（没有cpp文件），当你调用那个内联函数时，编译器没办法找到它。所以说将inline函数写在cpp文件中是没什么用的。
 
-## 56. `lock_guard, unique_lock`
+## 60. `lock_guard, unique_lock`
 
 区域锁`lock_guard`使用起来比较简单，除了构造函数外没有其他 `member function`，在整个区域都有效。
 
@@ -857,7 +869,7 @@ inline函数的特征是在调用的地方插入相应函数的代码，所以�
 
 通过 `try_lock_for/try_lock_until` 则可以控制加锁的等待时间，此时这种锁为乐观锁。
 
-## 57. __gnu_cxx 中__pool_alloc内存分配器的使用
+## 61. __gnu_cxx 中__pool_alloc内存分配器的使用
 
 __pool_alloc内部使用链表进行管理内存、预分配内存、不归还内存给操作系统等机制来减少malloc的调用次数。
 
@@ -883,7 +895,7 @@ int main()
 }
 ```
 
-## 58. std::list 排序
+## 62. std::list 排序
 
 list 底层是链表，迭代器不支持随机访问，所以不能外 std::sort 进行排序，必须使用自带的sort函数.
 能用自带的 sort，就不用外部的 sort
@@ -912,3 +924,28 @@ int main() {
     MyPrint(my_vec);
 }
 ```
+
+## 63. 获取 vector 最大/小值
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<float> my_vec = {2, 4, 10, 1};
+    auto max_position = std::max_element(my_vec.begin(), my_vec.end());
+    auto min_position = std::min_element(my_vec.begin(), my_vec.end());
+
+    std::cout << *max_position << " " << *min_position;
+}
+```
+
+## 64. 容器中 unorderxx 的实现一般都为 hash table
+
+## 65. list 是双向的, forward_list 是单向的
+
+## 66. atomic 初始化问题
+
+在C++17前, 只能使用花括号来初始化原子类型, `std::atomic<int> g_value{1};`

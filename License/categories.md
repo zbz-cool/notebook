@@ -1,5 +1,7 @@
 # License分类
 
+![](./image/License.png)
+
 ## 允许商业集成且没有开源风险的许可证
 
 ```log

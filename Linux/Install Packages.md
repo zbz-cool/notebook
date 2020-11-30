@@ -1,5 +1,4 @@
 
-
 ## 1. GCC8
 
 ```sh
@@ -45,19 +44,25 @@ export PATH="/home/zbz/anaconda3/bin:$PATH"
 # --------
 
 $ source ~/.bashrc
+
+
+If you'd prefer that conda's base environment not be activated on startup, 
+   set the auto_activate_base parameter to false: 
+
+conda config --set auto_activate_base false
 ```
 
 ## 3. bonito
 
 ```sh
 # 首先安装anaconda3
-$ git clone https://github.com/nanoporetech/bonito.git
-$ cd bonito # 如果想修改目录, 只有现在改
-$ python3 -m venv venv3
-$ source venv3/bin/activate
-(venv3) $ pip install --upgrade pip  # 需要替换pip的源
-(venv3) $ pip install -r requirements.txt
-(venv3) $ python setup.py develop # 记得执行该命令
+git clone https://github.com/nanoporetech/bonito.git
+cd bonito
+python3 -m venv venv3
+source venv3/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python setup.py develop
 ```
 
 ## 4. Ninja
@@ -84,8 +89,8 @@ sudo sh cuda_10.2.xxx_linux.run
 
 # 配置环境变量 还是使用.bashrc文件举例
 echo '# CUDA Soft Link' >> ~/.bashrc
-echo 'export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 source ~/.bashrc
 
 # 测试安装是否成功
@@ -193,3 +198,9 @@ make
 需将 `cmake` 更新到最新版本
 
 ## [clang-format for win](https://juejin.im/post/6844904174736375815)
+
+## protobuf 安装
+
+默认版本 : `sudo apt-get install libprotobuf-dev protobuf-compiler`  
+指定版本 : <https://www.jianshu.com/p/05e91bb8506f>
+同时安装两个版本 : <https://blog.csdn.net/u014454538/article/details/89005934>

@@ -1,28 +1,30 @@
 # Software Recommendation
 
-| Name                      | Description          | 备注                                   |
-| ------------------------- | -------------------- | -------------------------------------- |
-| everything                | 搜索                 |                                        |
-| islide                    | 做PPT插件            |                                        |
-| geek                      | 卸载                 | <https://geekuninstaller.com/download> |
-| 火绒                      | 杀毒                 |                                        |
-| bandizip                  | 压缩                 |                                        |
-| bandicam                  | 录屏                 |                                        |
-| honeycam                  | 自制表情包           |                                        |
-| PotPlayer                 | 视频播放器           |                                        |
-| 火萤                      | 桌面美化，资源占用多 | <http://www.huoying666.com/>           |
-| upupoo                    | 桌面美化，资源占用多 |                                        |
-| Listen1                   | 多平台音乐下载软件   |                                        |
-| smallPDF                  | 处理PDF文档          |                                        |
-| faststone capture /ShareX | 截长图，吸色         |                                        |
-| iobit uninstaller         | 软件管理             |                                        |
-| iobit advanced systemcare | 电脑优化             |                                        |
-| uupoop                    | 扣图                 | <https://www.uupoop.com/>              |
-| WoX                       | 快捷搜索(推荐)       | <https://github.com/Wox-launcher/Wox>  |
-| utools/listary            | 快捷搜索             |                                        |
-| 万彩办公大师              |                      |                                        |
-| Honeyview                 |                      |                                        |
-| IDM                       | 下载                 | 需要拨号连接，有点麻烦                 |
+| Name                      | Description                                                | 备注                                   |
+| ------------------------- | ---------------------------------------------------------- | -------------------------------------- |
+| DisplayFusion 9.7         | 多屏幕时, 切换显示                                         |                                        |
+| everything                | 搜索                                                       |                                        |
+| islide                    | 做PPT插件                                                  |                                        |
+| geek                      | 卸载                                                       | <https://geekuninstaller.com/download> |
+| 火绒                      | 杀毒                                                       |                                        |
+| bandizip                  | 压缩                                                       |                                        |
+| bandicam                  | 录屏                                                       |                                        |
+| honeycam                  | 自制表情包                                                 |                                        |
+| PotPlayer                 | 视频播放器                                                 |                                        |
+| 火萤                      | 桌面美化，资源占用多                                       | <http://www.huoying666.com/>           |
+| upupoo                    | 桌面美化，资源占用多                                       |                                        |
+| Listen1                   | 多平台音乐下载软件                                         |                                        |
+| smallPDF                  | 处理PDF文档                                                |                                        |
+| faststone capture /ShareX | 截长图，吸色                                               |                                        |
+| iobit uninstaller         | 软件管理                                                   |                                        |
+| iobit advanced systemcare | 电脑优化                                                   |                                        |
+| uupoop                    | 扣图                                                       | <https://www.uupoop.com/>              |
+| WoX                       | 快捷搜索(推荐)                                             | <https://github.com/Wox-launcher/Wox>  |
+| uTools                    | todolist, 搜索, 翻译                                       |                                        |
+| 万彩办公大师              |                                                            |                                        |
+| Honeyview                 |                                                            |                                        |
+| Synergy                   | 允许你轻松地在你办公桌上多台计算机之间共享你的鼠标和键盘。 |                                        |
+| Motrix                    | 下载器                                                     | https://github.com/agalwood/Motrix     |
 
 ## 英特尔快速存储技术
 

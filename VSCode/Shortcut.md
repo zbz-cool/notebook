@@ -14,7 +14,6 @@
 | Ctrl + K                    | 删除整个单词                        |
 | alt+up/down                 | 移动行                              |
 | ctrl + b                    | 显示/隐藏左侧目录栏(Markdown是加粗) |
-| shift + ctrl + k            | 删除当前行                          |
 | shift + alt +f              | 代码格式化                          |
 | ctrl + [                    | 行增加缩进                          |
 | ctrl + ]                    | 行减少缩进                          |
@@ -32,6 +31,14 @@
 | Ctrl + Shift + [/]          | 折叠/展开光标行内代                 |
 | Ctrl + Shift + ]            | 展开光标行内代码                    |
 | Ctrl + J                    | 隐藏/显示底部terminal等框           |
+| Ctrl + K, O                 | 将当前文件在新窗口中打开            |
+| Ctrl + K, Ctrl + S          | 打开快捷键设置界面                  |
+| Alt Up/Down                 | 同一个界面中的 terminal 切换         |
+| Ctrl Shift + 4              | 新增集成 terminal                |
+| Ctrl Shift + 5              | split terminal                |
+| Ctrl Shift + 6              | 集成 terminal 切换                  |
+
+
 
 ## Markdown
 

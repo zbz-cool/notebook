@@ -1,5 +1,14 @@
 # VSCode 使用分享
 
+## Visual Studio Code无法监视此大工作空间中的文件更改
+
+```bash
+$ cat /proc/sys/fs/inotify/max_user_watches # 查询状态
+8192 (默认)
+$ sudo vim /etc/sysctl.conf # 添加 `fs.inotify.max_user_watches=524288` 到最后一行
+$ sudo sysctl -p # 使之生效
+```
+
 ## 为什么推荐使用 VSCode
 
 1. 免费, 新功能更新速度快
@@ -84,3 +93,9 @@ input : process explorer
 Ctrl + Shift + P
 input : Show running extensions
 ```
+
+## downloading c/c++ language components (linux / x86_64)
+1. 无法下载 vscode 的 c/c++ 工具
+2. 找到对应的离线包, 例如 https://github.com/microsoft/vscode-cpptools/releases/tag/0.26.0
+3. 下载 cpptools-linux.vsix
+4. 使用 vscode 打开, 在资源管理界面, 右击选择 `Install Extension VSIX`

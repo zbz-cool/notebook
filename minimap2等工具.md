@@ -1,0 +1,3 @@
+- SAM : https://en.wikipedia.org/wiki/SAM_(file_format)
+- PAF : https://lh3.github.io/minimap2/minimap2.html
+- samtools 工具里的 -F 参数对应的解释 : http://broadinstitute.github.io/picard/explain-flags.html

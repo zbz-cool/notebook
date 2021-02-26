@@ -33,12 +33,18 @@
 | Ctrl + J                    | 隐藏/显示底部terminal等框           |
 | Ctrl + K, O                 | 将当前文件在新窗口中打开            |
 | Ctrl + K, Ctrl + S          | 打开快捷键设置界面                  |
-| Alt Up/Down                 | 同一个界面中的 terminal 切换         |
-| Ctrl Shift + 4              | 新增集成 terminal                |
-| Ctrl Shift + 5              | split terminal                |
+| Alt Up/Down                 | 同一个界面中的 terminal 切换        |
+| Ctrl Shift + 4              | 新增集成 terminal                   |
+| Ctrl Shift + 5              | split terminal                      |
 | Ctrl Shift + 6              | 集成 terminal 切换                  |
-
-
+| Ctrl Shift + 7              | rename terminal                     |
+| Ctrl Shift + 8              | close terminal                      |
+| Alt + O                     | Switcher(插件) 切换源文件与头文件   |
+| F4                          | 全局搜索时, 跳转到下一个搜索结果    |
+| Shift F4                    | 全局搜索时, 跳转到上一个搜索结果    |
+| Enter                       | 文件内搜索时, 跳转到下一个搜索结果  |
+| Shift Enter                 | 文件内搜索时, 跳转到上一个搜索结果  |
+| Ctrl + Page Up / Page Down  | 左右切换tab                         |
 
 ## Markdown
 

@@ -28,6 +28,11 @@
 | ---------- | ---------- | --------------------- |
 | debug 打印 | A[0]       | A[0].item().toFloat() |
 
+```
+torch::Tensor input = torch::tensor(read.info->signal);
+torch::Tensor input = torch::tensor(at::ArrayRef<float>(&signal[start], &signal[end]));
+```
+
 ## 4. 激活函数
 
 神经网络的激活函数必须使用非线性函数。换句话说，激活函数不能使用线性函数。为什么不能使用线性函数呢？因为使用线性函数的话，加深神经网络的层数就没有意义了。线性函数的问题在于，不管如何加深层数，总是存在与之等效的“无隐藏层的神经网络”。
